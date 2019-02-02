@@ -6,7 +6,7 @@ Just wanted to check the current state of node web server packages and add also 
 
 ### Source
 
-`server.*` gets a http request and responds with 'Hello World!'.
+`server.*` gets a http request and responds with `Hello World!`.
 
 ### Server
 A $20-Vultr-VM was used a server. Requesting server was in same city.
