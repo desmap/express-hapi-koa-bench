@@ -2,7 +2,7 @@
 
 ### Intro
 
-Just wanted to check the current state of node web server packages and add also nim's jester.
+Just wanted to check the current state of node web servers but then added also nim's jester.
 
 ### Source
 
