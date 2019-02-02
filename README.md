@@ -83,7 +83,7 @@ Req/Bytes counts sampled once per second.
 ##### jester
 Source compiled with `-d:release`.
 ```
-d@v:~$ npx autocannon -c 100 -d 5 -p 10 <ip>:5000
+$ npx autocannon -c 100 -d 5 -p 10 <ip>:5000
 100 connections with 10 pipelining factor
 
 ┌─────────┬──────┬──────┬───────┬───────┬─────────┬─────────┬───────────┐
