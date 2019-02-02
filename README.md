@@ -1,14 +1,42 @@
 ## express-hapi-koa-bench
 
+### Intro
+
+Just wanted to check the current state of node web server packages and add also nim's jester.
+
 ### Source
 
-`server.js` gets a http request and responds with 'Hello World!'.
+`server.*` gets a http request and responds with 'Hello World!'.
 
 ### Server
 A $20-Vultr-VM was used a server. Requesting server was in same city.
 
 ### Results
-#### express
+#### nim
+##### jester
+```
+d@v:~$ npx autocannon -c 100 -d 5 -p 10 <ip>:5000
+100 connections with 10 pipelining factor
+
+┌─────────┬──────┬──────┬───────┬───────┬─────────┬─────────┬───────────┐
+│ Stat    │ 2.5% │ 50%  │ 97.5% │ 99%   │ Avg     │ Stdev   │ Max       │
+├─────────┼──────┼──────┼───────┼───────┼─────────┼─────────┼───────────┤
+│ Latency │ 0 ms │ 0 ms │ 20 ms │ 24 ms │ 2.09 ms │ 7.05 ms │ 143.93 ms │
+└─────────┴──────┴──────┴───────┴───────┴─────────┴─────────┴───────────┘
+┌───────────┬─────────┬─────────┬─────────┬─────────┬─────────┬──────────┬─────────┐
+│ Stat      │ 1%      │ 2.5%    │ 50%     │ 97.5%   │ Avg     │ Stdev    │ Min     │
+├───────────┼─────────┼─────────┼─────────┼─────────┼─────────┼──────────┼─────────┤
+│ Req/Sec   │ 24911   │ 24911   │ 50719   │ 55455   │ 46715.2 │ 11154.27 │ 24900   │
+├───────────┼─────────┼─────────┼─────────┼─────────┼─────────┼──────────┼─────────┤
+│ Bytes/Sec │ 3.61 MB │ 3.61 MB │ 7.35 MB │ 8.04 MB │ 6.77 MB │ 1.62 MB  │ 3.61 MB │
+└───────────┴─────────┴─────────┴─────────┴─────────┴─────────┴──────────┴─────────┘
+
+Req/Bytes counts sampled once per second.
+
+234k requests in 5.11s, 33.9 MB read
+```
+#### node
+##### express
 ```
 $ npx autocannon -c 100 -d 5 -p 10 <ip>:4001
 100 connections with 10 pipelining factor
@@ -30,7 +58,7 @@ Req/Bytes counts sampled once per second.
 
 115k requests in 5.08s, 24.8 MB read
 ```
-#### hapi
+##### hapi
 ```
 npx autocannon -c 100 -d 5 -p 10 <ip>:4002
 100 connections with 10 pipelining factor
@@ -52,7 +80,7 @@ Req/Bytes counts sampled once per second.
 
 87k requests in 5.09s, 17.2 MB read
 ```
-#### koa
+##### koa
 ```
 $ npx autocannon -c 100 -d 5 -p 10 <ip>:4003
 100 connections with 10 pipelining factor
