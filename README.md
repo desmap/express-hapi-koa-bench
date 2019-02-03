@@ -2,7 +2,11 @@
 
 ### Intro
 
-Just wanted to check the current state of node web servers but then added also nim's jester.
+A brief benchmark of node's three most popular web server modules.
+
+New:
+- Added nim/jester
+- Added polka
 
 ### Source
 
@@ -37,7 +41,7 @@ Req/Bytes counts sampled once per second.
 ```
 ##### hapi
 ```
-npx autocannon -c 100 -d 5 -p 10 <ip>:4002
+$ npx autocannon -c 100 -d 5 -p 10 <ip>:4002
 100 connections with 10 pipelining factor
 
 ┌─────────┬──────┬──────┬───────┬───────┬─────────┬──────────┬───────────┐
@@ -79,6 +83,29 @@ Req/Bytes counts sampled once per second.
 
 177k requests in 5.1s, 27 MB read
 ```
+##### polka
+```
+$ npx autocannon -c 100 -d 5 -p 10 <ip?:4004
+100 connections with 10 pipelining factor
+
+┌─────────┬──────┬──────┬───────┬───────┬─────────┬────────┬───────────┐
+│ Stat    │ 2.5% │ 50%  │ 97.5% │ 99%   │ Avg     │ Stdev  │ Max       │
+├─────────┼──────┼──────┼───────┼───────┼─────────┼────────┼───────────┤
+│ Latency │ 0 ms │ 0 ms │ 13 ms │ 18 ms │ 2.13 ms │ 5.5 ms │ 230.85 ms │
+└─────────┴──────┴──────┴───────┴───────┴─────────┴────────┴───────────┘
+┌───────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
+│ Stat      │ 1%      │ 2.5%    │ 50%     │ 97.5%   │ Avg     │ Stdev   │ Min     │
+├───────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+│ Req/Sec   │ 31087   │ 31087   │ 48191   │ 49439   │ 45198.4 │ 7078.89 │ 31086   │
+├───────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+│ Bytes/Sec │ 3.48 MB │ 3.48 MB │ 5.39 MB │ 5.54 MB │ 5.06 MB │ 792 kB  │ 3.48 MB │
+└───────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
+
+Req/Bytes counts sampled once per second.
+
+226k requests in 5.1s, 25.3 MB read
+```
+
 #### nim
 ##### jester
 Source compiled with `-d:release`.
