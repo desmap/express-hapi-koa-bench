@@ -1,4 +1,4 @@
-## express-hapi-koa-bench
+## express-hapi-koa-bench + more
 
 ### Intro
 
@@ -7,6 +7,7 @@ A brief benchmark of node's three most popular web server modules.
 New:
 - Added nim/jester
 - Added polka
+- Added micro
 
 ### Source
 
@@ -83,6 +84,29 @@ Req/Bytes counts sampled once per second.
 
 177k requests in 5.1s, 27 MB read
 ```
+##### micro
+```
+$ npx autocannon -c 100 -d 5 -p 10 <ip>:4006
+100 connections with 10 pipelining factor
+
+┌─────────┬──────┬──────┬───────┬───────┬─────────┬─────────┬──────────┐
+│ Stat    │ 2.5% │ 50%  │ 97.5% │ 99%   │ Avg     │ Stdev   │ Max      │
+├─────────┼──────┼──────┼───────┼───────┼─────────┼─────────┼──────────┤
+│ Latency │ 0 ms │ 0 ms │ 17 ms │ 22 ms │ 2.55 ms │ 6.52 ms │ 147.4 ms │
+└─────────┴──────┴──────┴───────┴───────┴─────────┴─────────┴──────────┘
+┌───────────┬────────┬────────┬─────────┬─────────┬─────────┬─────────┬────────┐
+│ Stat      │ 1%     │ 2.5%   │ 50%     │ 97.5%   │ Avg     │ Stdev   │ Min    │
+├───────────┼────────┼────────┼─────────┼─────────┼─────────┼─────────┼────────┤
+│ Req/Sec   │ 30591  │ 30591  │ 36767   │ 46783   │ 37688   │ 5194.66 │ 30588  │
+├───────────┼────────┼────────┼─────────┼─────────┼─────────┼─────────┼────────┤
+│ Bytes/Sec │ 3.4 MB │ 3.4 MB │ 4.08 MB │ 5.19 MB │ 4.18 MB │ 577 kB  │ 3.4 MB │
+└───────────┴────────┴────────┴─────────┴─────────┴─────────┴─────────┴────────┘
+
+Req/Bytes counts sampled once per second.
+
+188k requests in 5.1s, 20.9 MB read
+```
+
 ##### node native
 ```
 $ npx autocannon -c 100 -d 5 -p <ip>:4005
