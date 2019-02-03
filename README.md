@@ -85,7 +85,7 @@ Req/Bytes counts sampled once per second.
 ```
 ##### node native
 ```
-d@v:~$ npx autocannon -c 100 -d 5 -p <ip>:4005
+$ npx autocannon -c 100 -d 5 -p <ip>:4005
 100 connections with 10 pipelining factor
 
 ┌─────────┬──────┬──────┬───────┬───────┬─────────┬─────────┬──────────┐
