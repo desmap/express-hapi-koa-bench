@@ -5,7 +5,7 @@
 A brief benchmark of node's three most popular web server modules.
 
 New:
-- Added nim/jester
+- Added nim/jester (added just out of curiosity)
 - Added polka
 - Added micro
 
@@ -14,7 +14,7 @@ New:
 `server.*` gets a http request and responds with `Hello World!`.
 
 ### Server
-A $20-Vultr-VM was used a server. Requesting server was in same city.
+A $20-Vultr-VM was used as server. Requesting server was in the same city.
 
 ### Results
 #### node
