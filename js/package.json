@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "express": "^4.16.4",
-    "fastify": "^1.13.4",
     "hapi": "^18.0.1",
     "koa": "^2.7.0",
+    "micro": "^9.3.3",
     "polka": "^0.5.1"
   },
   "devDependencies": {

@@ -1,6 +1,7 @@
 const express = require('express')
 const Hapi = require('hapi')
 const http = require('http')
+const micro = require('micro')
 const Koa = require('koa')
 const polka = require('polka')
 
@@ -36,6 +37,12 @@ koaApp.use(ctx => {
   ctx.body = 'Hello World!'
 })
 koaApp.listen(4003)
+
+/**
+ * micro
+ */
+
+micro(async (req, res) => 'Hello world').listen(4006)
 
 /**
  * node native
